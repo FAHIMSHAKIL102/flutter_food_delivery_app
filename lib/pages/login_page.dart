@@ -70,7 +70,7 @@ fill out authentication here
             SizedBox(height: 25),
 
             // sign in button
-            MyButton(text: 'Sign In', onTap: () {}),
+            MyButton(text: 'Sign In', onTap: login),
 
             SizedBox(height: 25),
             // not a member? register now
