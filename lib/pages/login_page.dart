@@ -4,7 +4,7 @@ import 'package:flutter_food_delivery_app/components/my_textformfield.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
- const LoginPage({super.key,required this.onTap});
+  const LoginPage({super.key, required this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
