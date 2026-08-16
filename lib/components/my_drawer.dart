@@ -37,6 +37,7 @@ class MyDrawer extends StatelessWidget {
             text: 'S E T T I N G',
             icon: Icons.settings,
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => SettingPage()),
