@@ -20,13 +20,17 @@ class MyTextformfield extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.tertiary),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.tertiary,
+            ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
           hintText: hintText,
-          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary)
+          hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         ),
       ),
     );
