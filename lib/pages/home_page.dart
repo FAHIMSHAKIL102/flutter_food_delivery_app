@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_current_location.dart';
 import 'package:flutter_food_delivery_app/components/my_description_box.dart';
@@ -45,6 +44,7 @@ class _HomePageState extends State<HomePage>
       List<Food> categoryMenu = _filterMenuByCategory(category, fullMenu);
       return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           return ListTile(title: Text(categoryMenu[index].name));
         },
