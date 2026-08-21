@@ -8,6 +8,28 @@ class MyFoodTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: onTap,
+          child: Row(
+            children: [
+              // text food details
+              Expanded(
+                child: Column(
+                  children: [
+                    Text(food.name),
+                    Text(food.price.toString()),
+                    Text(food.description),
+                  ],
+                ),
+              ),
+              // food image
+              Image.asset(food.imagePath),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
