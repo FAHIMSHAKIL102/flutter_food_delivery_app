@@ -19,13 +19,24 @@ class MyFoodTile extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(food.name),
-                    Text(food.price.toString()),
-                    Text(food.description),
+                    Text(
+                      '\$' + food.price.toString(),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                    Text(
+                      food.description,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
                   ],
                 ),
               ),
               // food image
-              Image.asset(food.imagePath),
+              ClipRRect(borderRadius: BorderRadius.circular(8),
+                child: Image.asset(food.imagePath, height: 120)),
             ],
           ),
         ),
