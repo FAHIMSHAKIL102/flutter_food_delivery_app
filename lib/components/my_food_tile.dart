@@ -23,7 +23,7 @@ class MyFoodTile extends StatelessWidget {
                     children: [
                       Text(food.name),
                       Text(
-                        '\$' + food.price.toString(),
+                        '\$${food.price}',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                         ),
@@ -43,7 +43,7 @@ class MyFoodTile extends StatelessWidget {
                 // food image
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(food.imagePath, height: 120),
+                  child: Image.asset(food.imagePath, height: 120,fit: BoxFit.cover,),
                 ),
               ],
             ),
