@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/pages/cart_page.dart';
 
 class MySilverAppBar extends StatelessWidget {
   final Widget child;
@@ -15,7 +16,15 @@ class MySilverAppBar extends StatelessWidget {
       pinned: true,
       actions: [
         // cart button
-        IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
+        IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CartPage()),
+            );
+          },
+          icon: Icon(Icons.shopping_cart),
+        ),
       ],
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: Text('Sunset Diner'),

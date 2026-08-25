@@ -341,6 +341,7 @@ class Restaurant with ChangeNotifier {
   G E T T E R S
    */
   List<Food> get menu => _menu;
+  List<CartItem> get cart => _cart;
   /* 
   O P E R A T I O N S
   */
@@ -369,7 +370,7 @@ class Restaurant with ChangeNotifier {
   }
 
   // remove from cart
-  void removeFromCcart(CartItem cartItem) {
+  void removeFromCart(CartItem cartItem) {
     int cartIndex = _cart.indexOf(cartItem);
 
     if (cartIndex != 1) {
