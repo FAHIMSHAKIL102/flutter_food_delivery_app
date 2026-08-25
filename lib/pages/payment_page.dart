@@ -47,6 +47,7 @@ class _PaymentPageState extends State<PaymentPage> {
             // yes button
             TextButton(
               onPressed: () {
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
