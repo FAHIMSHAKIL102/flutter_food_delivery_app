@@ -38,6 +38,9 @@ dependencies:
   collection: ^1.19.1
   flutter_credit_card: ^4.1.0
   intl: ^0.20.3
+  firebase_core: ^4.14.0
+  firebase_auth: ^6.6.0
+  cloud_firestore: ^6.9.0
 
 dev_dependencies:
   flutter_test:

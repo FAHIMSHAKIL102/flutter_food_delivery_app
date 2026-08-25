@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_food_delivery_app/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class MyCurrentLocation extends StatelessWidget {
-  const MyCurrentLocation({super.key});
+  final TextEditingController locationController = TextEditingController();
+  MyCurrentLocation({super.key});
+
   void openLocationSearchBox(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Your Location'),
         content: TextField(
-          decoration: InputDecoration(hintText: 'Search address..'),
+          controller: locationController,
+          decoration: InputDecoration(hintText: 'Enter address..'),
         ),
         actions: [
           // cancel button
           MaterialButton(
             onPressed: () {
               Navigator.pop(context);
+              locationController.clear();
             },
             child: Text('Cancel'),
           ),
           // save button
           MaterialButton(
             onPressed: () {
+              // update delivery address
+              String newAddress = locationController.text;
+              context.read<Restaurant>().updateDeliveryAddress(newAddress);
               Navigator.pop(context);
+              locationController.clear();
             },
             child: Text('Save'),
           ),
@@ -46,11 +56,13 @@ class MyCurrentLocation extends StatelessWidget {
             child: Row(
               children: [
                 // address
-                Text(
-                  'Gazipur,Bangladesh',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.inversePrimary,
+                Consumer<Restaurant>(
+                  builder: (context, restaurant, child) => Text(
+                    restaurant.deliveryAddress,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
                   ),
                 ),
                 // drop down menu

@@ -343,11 +343,22 @@ class Restaurant with ChangeNotifier {
    */
   List<Food> get menu => _menu;
   List<CartItem> get cart => _cart;
+
   /* 
   O P E R A T I O N S
   */
   // user cart
   final List<CartItem> _cart = [];
+
+  // delivery address
+  String _deliveryAddress = 'Gazipur,Bangladesh';
+  String get deliveryAddress => _deliveryAddress;
+
+  void updateDeliveryAddress(String newAddress) {
+    _deliveryAddress = newAddress;
+    notifyListeners();
+  }
+
   // add to cart
   void addToCart(Food food, List<Addon> selectedAddons) {
     // see if there is a cart item already with the same food and selected addons
@@ -447,6 +458,8 @@ class Restaurant with ChangeNotifier {
     receipt.writeln();
     receipt.writeln("Total Items: ${getTotalItemCount()}");
     receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln();
+    receipt.writeln("Delivering to: $deliveryAddress");
 
     return receipt.toString();
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_button.dart';
 import 'package:flutter_food_delivery_app/components/my_textformfield.dart';
+import 'package:flutter_food_delivery_app/services/auth/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -12,11 +13,38 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
-
   final TextEditingController confirmPasswordController =
       TextEditingController();
+
+  // register method
+  void register() async {
+    // get auth service
+    final _authService = AuthService();
+
+    // check if password match -> create user
+    if (passwordController.text == confirmPasswordController.text) {
+      try {
+        await _authService.signUpWithEmailPassword(
+          emailController.text,
+          passwordController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(title: Text(e.toString())),
+        );
+      }
+    }
+    // if password don't match -> show error
+    else {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(title: Text("Password don't match")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
             SizedBox(height: 25),
             // sign up button
-            MyButton(text: 'Sign Up', onTap: () {}),
+            MyButton(text: 'Sign Up', onTap: register),
 
             SizedBox(height: 25),
             // already have an acccount? login here
