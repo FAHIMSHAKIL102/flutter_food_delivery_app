@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_receipt.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
