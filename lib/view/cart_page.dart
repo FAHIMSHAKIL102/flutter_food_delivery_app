@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_button.dart';
 import 'package:flutter_food_delivery_app/components/my_cart_tile.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
-import 'package:flutter_food_delivery_app/pages/payment_page.dart';
+import 'package:flutter_food_delivery_app/view/payment_page.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_drawer_tile.dart';
-import 'package:flutter_food_delivery_app/pages/setting_page.dart';
+import 'package:flutter_food_delivery_app/view/setting_page.dart';
 import 'package:flutter_food_delivery_app/services/auth/auth_service.dart';
 
 class MyDrawer extends StatelessWidget {

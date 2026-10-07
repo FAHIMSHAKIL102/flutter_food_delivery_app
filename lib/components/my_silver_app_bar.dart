@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_food_delivery_app/pages/cart_page.dart';
+import 'package:flutter_food_delivery_app/view/cart_page.dart';
 
 class MySilverAppBar extends StatelessWidget {
   final Widget child;

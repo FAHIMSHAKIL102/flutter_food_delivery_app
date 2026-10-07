@@ -7,7 +7,7 @@ import 'package:flutter_food_delivery_app/components/my_silver_app_bar.dart';
 import 'package:flutter_food_delivery_app/components/my_tab_bar.dart';
 import 'package:flutter_food_delivery_app/models/food.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
-import 'package:flutter_food_delivery_app/pages/food_page.dart';
+import 'package:flutter_food_delivery_app/view/food_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
