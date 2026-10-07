@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_button.dart';
 import 'package:flutter_food_delivery_app/components/my_textformfield.dart';
 import 'package:flutter_food_delivery_app/services/auth/auth_service.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -42,20 +43,20 @@ class _LoginPageState extends State<LoginPage> {
             // logo
             Icon(
               Icons.lock_open_rounded,
-              size: 100,
+              size: 100.r,
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
 
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
             // message,app slogan
             Text(
               'Food Delivery App',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 16.sp,
                 color: Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
             // email textfieild
             MyTextformfield(
               controller: emailController,
@@ -63,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: false,
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: 10.h),
             // password textfield
             MyTextformfield(
               controller: passwordController,
@@ -71,12 +72,12 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
             ),
 
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
 
             // sign in button
             MyButton(text: 'Sign In', onTap: login),
 
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
             // not a member? register now
             Row(
               mainAxisAlignment: .center,
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
-                SizedBox(width: 4),
+                SizedBox(width: 4.w),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(

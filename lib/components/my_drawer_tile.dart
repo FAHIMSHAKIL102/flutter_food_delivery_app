@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDrawerTile extends StatelessWidget {
   final String text;
@@ -14,7 +15,7 @@ class MyDrawerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25.0),
+      padding: EdgeInsets.only(left: 25.0.w),
       child: ListTile(
         onTap: onTap,
         leading: Icon(

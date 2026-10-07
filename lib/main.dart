@@ -4,6 +4,7 @@ import 'package:flutter_food_delivery_app/services/auth/auth_gate.dart';
 import 'package:flutter_food_delivery_app/firebase_options.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 import 'package:flutter_food_delivery_app/themes/theme_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -25,10 +26,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AuthGate(),
-      theme: Provider.of<ThemeProvider>(context).themeData,
+    return ScreenUtilInit(
+      designSize: Size(427, 952),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: child,
+          theme: Provider.of<ThemeProvider>(context).themeData,
+        );
+      },
+      child: AuthGate(),
     );
   }
 }

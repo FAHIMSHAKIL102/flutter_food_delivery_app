@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_button.dart';
 import 'package:flutter_food_delivery_app/models/food.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class FoodPage extends StatefulWidget {
@@ -47,7 +48,7 @@ class _FoodPageState extends State<FoodPage> {
                 SizedBox(child: Image.asset(widget.food.imagePath)),
 
                 Padding(
-                  padding: const EdgeInsets.all(25.0),
+                  padding: EdgeInsets.all(25.0.w),
                   child: Column(
                     crossAxisAlignment: .start,
                     children: [
@@ -55,11 +56,11 @@ class _FoodPageState extends State<FoodPage> {
                       Text(
                         widget.food.name,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       // food price
                       Text(
                         '\$${widget.food.price}',
@@ -67,13 +68,13 @@ class _FoodPageState extends State<FoodPage> {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       // food description
                       Text(
                         widget.food.description,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16.sp),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Divider(color: Theme.of(context).colorScheme.secondary),
 
                       // addons
@@ -81,11 +82,11 @@ class _FoodPageState extends State<FoodPage> {
                         'Add-ons',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.inversePrimary,
-                          fontSize: 16,
+                          fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -115,7 +116,7 @@ class _FoodPageState extends State<FoodPage> {
                           },
                         ),
                       ),
-                      SizedBox(height: 25),
+                      SizedBox(height: 25.h),
                       // button -> add to cart
                       MyButton(
                         text: 'Add to Cart',
@@ -132,7 +133,7 @@ class _FoodPageState extends State<FoodPage> {
         ),
         // Back Button
         Container(
-          margin: EdgeInsets.only(top: 50, left: 25),
+          margin: EdgeInsets.only(top: 50.h, left: 25.w),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondary,
             shape: BoxShape.circle,

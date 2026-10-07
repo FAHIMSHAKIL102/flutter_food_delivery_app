@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/themes/theme_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class SettingPage extends StatelessWidget {
@@ -14,8 +15,8 @@ class SettingPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(25),
-            margin: EdgeInsets.only(left: 25, top: 10, right: 25),
+            padding: EdgeInsets.all(25.w),
+            margin: EdgeInsets.only(left: 25.w, top: 10.h, right: 25.w),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,
               borderRadius: BorderRadius.circular(12),

@@ -3,6 +3,7 @@ import 'package:flutter_food_delivery_app/components/my_button.dart';
 import 'package:flutter_food_delivery_app/components/my_cart_tile.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 import 'package:flutter_food_delivery_app/view/payment_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
@@ -88,7 +89,7 @@ class CartPage extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 25),
+              SizedBox(height: 25.h),
             ],
           ),
         );

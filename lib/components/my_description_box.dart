@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDescriptionBox extends StatelessWidget {
   const MyDescriptionBox({super.key});
@@ -17,8 +18,8 @@ class MyDescriptionBox extends StatelessWidget {
         border: Border.all(color: Theme.of(context).colorScheme.secondary),
         borderRadius: BorderRadius.circular(8),
       ),
-      padding: EdgeInsets.all(25),
-      margin: EdgeInsets.only(left: 25, right: 25, bottom: 25),
+      padding: EdgeInsets.all(25.w),
+      margin: EdgeInsets.only(left: 25.w, right: 25.w, bottom: 25.h),
       child: Row(
         mainAxisAlignment: .spaceBetween,
         children: [

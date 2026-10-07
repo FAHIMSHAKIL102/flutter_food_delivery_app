@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_drawer_tile.dart';
 import 'package:flutter_food_delivery_app/view/setting_page.dart';
 import 'package:flutter_food_delivery_app/services/auth/auth_service.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -14,7 +15,7 @@ class MyDrawer extends StatelessWidget {
         children: [
           // app logo
           Padding(
-            padding: const EdgeInsets.only(top: 100.0),
+            padding: EdgeInsets.only(top: 100.0.h),
             child: Icon(
               Icons.lock_open_rounded,
               size: 80,
@@ -22,7 +23,7 @@ class MyDrawer extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(25),
+            padding: EdgeInsets.all(25.w),
             child: Divider(color: Theme.of(context).colorScheme.inversePrimary),
           ),
           // home list tile
@@ -56,7 +57,7 @@ class MyDrawer extends StatelessWidget {
             },
           ),
 
-          SizedBox(height: 25),
+          SizedBox(height: 25.h),
         ],
       ),
     );

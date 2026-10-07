@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:flutter_food_delivery_app/components/my_button.dart';
 import 'package:flutter_food_delivery_app/view/delivery_progress_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
@@ -105,7 +106,7 @@ class _PaymentPageState extends State<PaymentPage> {
           Spacer(),
 
           MyButton(text: "Pay Now", onTap: userTrapToPay),
-          SizedBox(height: 25),
+          SizedBox(height: 25.h),
         ],
       ),
     );

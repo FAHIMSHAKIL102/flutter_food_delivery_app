@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/view/cart_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MySilverAppBar extends StatelessWidget {
   final Widget child;
@@ -10,8 +11,8 @@ class MySilverAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       centerTitle: true,
-      expandedHeight: 340,
-      collapsedHeight: 120,
+      expandedHeight: 340.h,
+      collapsedHeight: 120.h,
       floating: false,
       pinned: true,
       actions: [
@@ -30,7 +31,7 @@ class MySilverAppBar extends StatelessWidget {
       title: Text('Sunset Diner'),
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
-          padding: const EdgeInsets.only(bottom: 50.0),
+          padding: EdgeInsets.only(bottom: 50.0.h),
           child: child,
         ),
         title: title,

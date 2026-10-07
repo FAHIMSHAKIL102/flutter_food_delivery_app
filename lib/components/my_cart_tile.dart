@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_quantity_selector.dart';
 import 'package:flutter_food_delivery_app/models/cart_item.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class MyCartTile extends StatelessWidget {
@@ -13,15 +14,15 @@ class MyCartTile extends StatelessWidget {
     return Consumer<Restaurant>(
       builder: (context, restaurant, child) {
         return Container(
-          margin: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          margin: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.secondary,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(8.r),
           ),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0.w),
                 child: Row(
                   children: [
                     // food image
@@ -29,11 +30,11 @@ class MyCartTile extends StatelessWidget {
                       borderRadius: BorderRadiusGeometry.circular(8),
                       child: Image.asset(
                         cartItem.food.imagePath,
-                        height: 100,
-                        width: 100,
+                        height: 100.h,
+                        width: 100.w,
                       ),
                     ),
-                    SizedBox(width: 10),
+                    SizedBox(width: 10.w),
 
                     // name and price
                     Column(
@@ -44,7 +45,7 @@ class MyCartTile extends StatelessWidget {
                         Text(cartItem.food.name),
                         // food price
                         Text('\$${cartItem.food.price}'),
-                        SizedBox(height: 10),
+                        SizedBox(height: 10.h),
 
                         // increment or decrement quantity
                         MyQuantitySelector(
@@ -69,14 +70,18 @@ class MyCartTile extends StatelessWidget {
               ),
               // addons
               SizedBox(
-                height: cartItem.selectedAddons.isEmpty ? 0 : 60,
+                height: cartItem.selectedAddons.isEmpty ? 0 : 60.h,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  padding: EdgeInsets.only(left: 10, bottom: 10, right: 10),
+                  padding: EdgeInsets.only(
+                    left: 10.w,
+                    bottom: 10.h,
+                    right: 10.w,
+                  ),
                   children: cartItem.selectedAddons
                       .map(
                         (addon) => Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: EdgeInsets.only(right: 8.0.w),
                           child: FilterChip(
                             label: Row(
                               children: [
@@ -100,7 +105,7 @@ class MyCartTile extends StatelessWidget {
                               color: Theme.of(
                                 context,
                               ).colorScheme.inversePrimary,
-                              fontSize: 12,
+                              fontSize: 12.sp,
                             ),
                           ),
                         ),

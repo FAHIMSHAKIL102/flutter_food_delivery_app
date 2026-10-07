@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/models/food.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyFoodTile extends StatelessWidget {
   final Food food;
@@ -13,7 +14,7 @@ class MyFoodTile extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(15.0.w),
             child: Row(
               children: [
                 // text food details
@@ -28,7 +29,7 @@ class MyFoodTile extends StatelessWidget {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Text(
                         food.description,
                         style: TextStyle(
@@ -38,14 +39,14 @@ class MyFoodTile extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 15),
+                SizedBox(width: 15.w),
 
                 // food image
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
                     food.imagePath,
-                    height: 120,
+                    height: 120.h,
                     fit: BoxFit.cover,
                   ),
                 ),

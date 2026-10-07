@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/components/my_receipt.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
 import 'package:flutter_food_delivery_app/services/database/firestore.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class DeliveryProgressPage extends StatefulWidget {
@@ -42,7 +43,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(25.0),
+        padding: EdgeInsets.all(25.0.w),
         child: Row(
           children: [
             // profile pic of driver
@@ -53,7 +54,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
               ),
               child: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
             ),
-            SizedBox(width: 10),
+            SizedBox(width: 10.w),
             // driver details
             Column(
               crossAxisAlignment: .start,
@@ -82,7 +83,7 @@ class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 // call button
                 Container(
                   decoration: BoxDecoration(

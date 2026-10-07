@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_app/models/restaurant.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class MyReceipt extends StatelessWidget {
@@ -8,13 +9,18 @@ class MyReceipt extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25, bottom: 25, top: 50),
+      padding: EdgeInsets.only(
+        left: 25.w,
+        right: 25.w,
+        bottom: 25.h,
+        top: 50.h,
+      ),
       child: Center(
         child: Column(
           mainAxisAlignment: .center,
           children: [
             Text("Thanks you for Your order"),
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
@@ -23,7 +29,7 @@ class MyReceipt extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: EdgeInsets.all(25.0.w),
                 child: Consumer<Restaurant>(
                   builder: (context, restaurant, child) {
                     return Text(restaurant.displayCartReceipt());
@@ -32,7 +38,7 @@ class MyReceipt extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: 25),
+            SizedBox(height: 25.h),
             Text("Estimated delivery time is 4:10 PM"),
           ],
         ),
