@@ -1,112 +1,217 @@
-# Flutter Food Delivery App
+# 🍔 Flutter Food Delivery App (Sunset Diner)
 
-A Flutter food delivery application with Firebase authentication, restaurant menus, cart management, checkout, order storage, delivery progress, and light/dark themes.
+A modern, responsive Flutter food delivery application featuring Firebase Authentication, interactive menus with category filtering, customizable food add-ons, dynamic cart management, animated credit card checkout, Cloud Firestore order persistence, live order tracking with receipt generation, and seamless light/dark theme switching.
 
-## Features
+---
 
-- Email and password registration and login with Firebase Authentication
-- Authentication gate for signed-in users
-- Restaurant menu grouped by food category
-- Food details and quantity selection
-- Shopping cart with receipt summary
-- Credit card checkout form
-- Order storage in Cloud Firestore
-- Delivery progress screen after checkout
-- Light and dark theme support
+## 📱 Screen Showcase
 
-## Tech Stack
+### 1. Authentication Flow
+Secure authentication flow powered by Firebase Auth, supporting instant switching between sign-in and sign-up with real-time auth state listening via `AuthGate`.
 
-- Flutter and Dart
-- Firebase Core, Authentication, and Cloud Firestore
-- Provider for application state management
-- `flutter_credit_card` for the checkout form
-- `intl` and `collection` utilities
+| Login Screen | Register Screen |
+| :---: | :---: |
+| <img src="screenshots/01_login_page.png" width="300" alt="Login Screen" /> | <img src="screenshots/02_register_page.png" width="300" alt="Register Screen" /> |
+| **Login** (`lib/view/login_page.dart`) | **Register** (`lib/view/register_page.dart`) |
 
-## Requirements
+- **Login Screen**: Clean, minimalist form with email and password fields, error alert dialogs, and a one-tap link to registration.
+- **Register Screen**: Account creation form with password matching validation and automatic authentication upon successful registration.
 
-- Flutter 3.47.1 or a compatible recent Flutter SDK
-- Dart SDK 3.12.2 or newer within the project constraint
-- Android Studio with an Android SDK installed
-- A Firebase project configured for the platforms you want to run
+---
 
-Check your local setup with:
+### 2. Menu Browsing & Navigation
+Interactive food catalog with collapsible Sliver App Bar, tabbed category navigation, delivery location header, and side drawer navigation.
+
+| Home Menu (Light Mode) | Navigation Drawer | Food Customization |
+| :---: | :---: | :---: |
+| <img src="screenshots/03_home_page.png" width="280" alt="Home Menu Screen" /> | <img src="screenshots/04_drawer_menu.png" width="280" alt="Navigation Drawer" /> | <img src="screenshots/05_food_details.png" width="280" alt="Food Details Screen" /> |
+| **Home Page** (`lib/view/home_page.dart`) | **Drawer Menu** (`lib/components/my_drawer.dart`) | **Food Page** (`lib/view/food_page.dart`) |
+
+- **Home Page**: Features category tabs (*Burgers, Salads, Sides, Desserts, Drinks*), estimated delivery fee & time badges, delivery address display, and rich food cards.
+- **Navigation Drawer**: Quick access to Home, Settings, and Account Sign Out.
+- **Food Detail & Add-ons**: High-resolution dish hero view, detailed item description, interactive multi-select add-on checkboxes with dynamic price calculations, and sticky "Add to Cart" action.
+
+---
+
+### 3. Cart, Checkout & Payment
+Complete order lifecycle management with quantity modification, interactive credit card visualizer, and payment validation.
+
+| Shopping Cart | Payment Form | Payment Confirmation |
+| :---: | :---: | :---: |
+| <img src="screenshots/06_cart_page.png" width="280" alt="Shopping Cart Screen" /> | <img src="screenshots/07_checkout_payment.png" width="280" alt="Checkout Payment Screen" /> | <img src="screenshots/07b_confirm_payment_dialog.png" width="280" alt="Confirm Payment Dialog" /> |
+| **Cart** (`lib/view/cart_page.dart`) | **Checkout** (`lib/view/payment_page.dart`) | **Confirm Dialog** (`lib/view/payment_page.dart`) |
+
+- **Shopping Cart**: Real-time cart state with item cards, chosen add-on chips, quantity increment/decrement controls, quick cart wipe dialog, and proceed to checkout action.
+- **Credit Card Checkout**: Integrated `flutter_credit_card` widget with front/back card flip animation, CVV focus detection, and card brand badge.
+- **Payment Confirmation Dialog**: Modal summary reviewing payment cardholder details before triggering order processing.
+
+---
+
+### 4. Order Tracking, Receipt & Themes
+Post-checkout live delivery status, itemized receipts saved to Firestore, and complete light/dark theme customization.
+
+| Live Delivery & Receipt | Settings (Light Mode) | Settings (Dark Mode) | Home (Dark Mode) |
+| :---: | :---: | :---: | :---: |
+| <img src="screenshots/08_delivery_progress.png" width="220" alt="Delivery Progress Screen" /> | <img src="screenshots/09_setting_page.png" width="220" alt="Settings Light Mode" /> | <img src="screenshots/10_setting_page_dark.png" width="220" alt="Settings Dark Mode" /> | <img src="screenshots/11_home_page_dark.png" width="220" alt="Settings Dark Mode" /> |
+| **Delivery Progress** (`lib/view/delivery_progress_page.dart`) | **Settings (Light)** (`lib/view/setting_page.dart`) | **Settings (Dark)** (`lib/view/setting_page.dart`) | **Home (Dark)** (`lib/view/home_page.dart`) |
+
+- **Delivery Progress**: Itemized, formatted receipt with exact date/timestamp, item breakdown, calculated tax and totals, estimated arrival time, and driver contact widget (call & message shortcuts).
+- **Settings Screen**: Cupertino-style toggle for instant theme swapping persisted across the session via Provider.
+- **Dark Mode Support**: Carefully tuned high-contrast dark theme surfaces across all components, typography, and card containers.
+
+---
+
+## 📑 Screen Architecture & Documentation
+
+| Screen | File Path | Primary Functionality | State & Dependencies |
+| :--- | :--- | :--- | :--- |
+| **Auth Gate** | [`lib/services/auth/auth_gate.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/services/auth/auth_gate.dart) | Listens to Firebase auth state and streams user to `HomePage` or `LoginOrRegister`. | `FirebaseAuth.authStateChanges()` |
+| **Login** | [`lib/view/login_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/login_page.dart) | User authentication via email and password with error dialog notifications. | `AuthService.signInWithEmailPassword` |
+| **Register** | [`lib/view/register_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/register_page.dart) | Account registration with password verification and validation. | `AuthService.signUpWithEmailPassword` |
+| **Home** | [`lib/view/home_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/home_page.dart) | Tab-filtered menu catalog, address selector, delivery description, and drawer access. | `Provider<Restaurant>`, `TabController` |
+| **Navigation Drawer** | [`lib/components/my_drawer.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/components/my_drawer.dart) | Side navigation panel providing routing to Home, Settings, and sign-out triggers. | `AuthService.signOut`, `Navigator` |
+| **Food Details** | [`lib/view/food_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/food_page.dart) | Detailed item view, multi-option add-on checkboxes, and quantity dispatch to cart. | `Restaurant.addToCart`, local checkbox state |
+| **Shopping Cart** | [`lib/view/cart_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/cart_page.dart) | Cart item display, add-on chips, quantity +/- adjustments, and cart reset dialog. | `Consumer<Restaurant>`, `MyQuantitySelector` |
+| **Checkout & Payment** | [`lib/view/payment_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/payment_page.dart) | Interactive credit card form with field validation and payment confirmation dialog. | `flutter_credit_card`, `GlobalKey<FormState>` |
+| **Delivery Progress** | [`lib/view/delivery_progress_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/delivery_progress_page.dart) | Receipt rendering, automatic Firestore persistence, and simulated driver communication. | `FirestoreService.saveOrderToDatabase`, `MyReceipt` |
+| **Settings** | [`lib/view/setting_page.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/view/setting_page.dart) | User preferences and dynamic Light/Dark mode toggling. | `Provider<ThemeProvider>`, `CupertinoSwitch` |
+
+---
+
+## 🛠️ Tech Stack & Libraries
+
+- **Framework**: [Flutter](https://flutter.dev/) & [Dart](https://dart.dev/)
+- **Backend & Database**:
+  - `firebase_core`: Firebase app initialization
+  - `firebase_auth`: Email/Password authentication & persistent session management
+  - `cloud_firestore`: Order history and receipts persistence (`orders` collection)
+- **State Management**: [Provider](https://pub.dev/packages/provider) (`ThemeProvider`, `Restaurant`)
+- **UI & Layout**:
+  - `flutter_screenutil`: Adaptive, responsive UI sizing across device screen factors
+  - `flutter_credit_card`: Credit card rendering and interactive payment form
+- **Formatting Utilities**:
+  - `intl`: Date, currency, and timestamp formatting for receipts
+  - `collection`: Collection equality and helper utilities
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Flutter SDK (3.24+ recommended)
+- Dart SDK (3.5+ recommended)
+- Android Studio / VS Code with Flutter extension
+- Android Emulator or physical device connected
+- Active Firebase Project
+
+Check your environment:
 
 ```bash
 flutter doctor
 ```
 
-## Firebase Setup
+### 1. Clone & Install Dependencies
 
-Firebase is initialized in `lib/main.dart`, so Firebase configuration is required before running the app.
+```bash
+git clone https://github.com/FAHIMSHAKIL102/flutter_food_delivery_app.git
+cd flutter_food_delivery_app
+flutter pub get
+```
 
-1. Create or select a project in the [Firebase Console](https://console.firebase.google.com/).
-2. Enable **Email/Password** under Firebase Authentication.
-3. Create a Cloud Firestore database.
-4. Install and run FlutterFire configuration:
+### 2. Firebase Configuration
+
+Ensure Firebase is configured for your target platforms:
+
+1. Create a project in the [Firebase Console](https://console.firebase.google.com/).
+2. Enable **Email/Password** authentication under *Authentication > Sign-in method*.
+3. Create a **Cloud Firestore** database.
+4. Run FlutterFire CLI configuration:
 
    ```bash
    dart pub global activate flutterfire_cli
    flutterfire configure
    ```
 
-5. Confirm that `lib/firebase_options.dart` contains the generated platform settings.
-6. For Android, confirm that the matching `google-services.json` is present in `android/app/`.
+5. Confirm that [`lib/firebase_options.dart`](file:///d:/Programming/flutterproject/flutter_food_delivery_app/lib/firebase_options.dart) and `android/app/google-services.json` are present.
 
-Completed order receipts are written to the Firestore collection named `orders`.
-
-## Installation and Running
+### 3. Run Application
 
 ```bash
-git clone https://github.com/FAHIMSHAKIL102/flutter_food_delivery_app.git
-cd flutter_food_delivery_app
-flutter pub get
+# Check connected devices
 flutter devices
-flutter run
+
+# Run on your default or specific device
+flutter run -d emulator-5554
 ```
 
-To run on a specific device:
+---
 
-```bash
-flutter run -d <device-id>
-```
-
-Build a debug Android APK:
-
-```bash
-flutter build apk --debug
-```
-
-## Project Structure
+## 📂 Project Directory Structure
 
 ```text
-lib/
-  components/       Reusable UI components
-  models/            Food, restaurant, and cart models
-  pages/             Login, home, food, cart, payment, and delivery screens
-  services/
-    auth/            Firebase authentication and auth gate
-    database/        Firestore order persistence
-  themes/            Theme data and theme provider
-  firebase_options.dart
-  main.dart
-assets/images/      Food and application images
+flutter_food_delivery_app/
+├── android/                   # Android native configuration & Gradle scripts
+├── assets/                    # Static image assets
+│   └── images/                # Burgers, salads, sides, drinks, desserts
+├── ios/                       # iOS native configuration & Podfile
+├── lib/
+│   ├── components/            # Reusable UI widgets
+│   │   ├── my_button.dart
+│   │   ├── my_cart_tile.dart
+│   │   ├── my_current_location.dart
+│   │   ├── my_description_box.dart
+│   │   ├── my_drawer.dart
+│   │   ├── my_drawer_tile.dart
+│   │   ├── my_food_tile.dart
+│   │   ├── my_quantity_selector.dart
+│   │   ├── my_receipt.dart
+│   │   ├── my_silver_app_bar.dart
+│   │   ├── my_tab_bar.dart
+│   │   └── my_textformfield.dart
+│   ├── models/                # Domain models
+│   │   ├── cart_item.dart
+│   │   ├── food.dart
+│   │   └── restaurant.dart
+│   ├── services/              # Firebase & database services
+│   │   ├── auth/              # AuthService, AuthGate, LoginOrRegister
+│   │   └── database/          # FirestoreService (order logging)
+│   ├── themes/                # App styling
+│   │   ├── dark_mode.dart
+│   │   ├── light_mode.dart
+│   │   └── theme_provider.dart
+│   ├── view/                  # Screen views
+│   │   ├── cart_page.dart
+│   │   ├── delivery_progress_page.dart
+│   │   ├── food_page.dart
+│   │   ├── home_page.dart
+│   │   ├── login_page.dart
+│   │   ├── payment_page.dart
+│   │   ├── register_page.dart
+│   │   └── setting_page.dart
+│   ├── firebase_options.dart  # Generated Firebase platform options
+│   └── main.dart              # App entry point & provider tree
+├── screenshots/               # High-resolution screen captures for documentation
+└── README.md                  # Project documentation & visual showcase
 ```
 
-## Development Notes
+---
 
-- The menu is currently provided by the `Restaurant` model and managed with Provider.
-- Checkout uses `flutter_credit_card` for validation and display. It is a demo flow and does not process a real card payment.
-- Do not commit private Firebase credentials or production API keys.
-
-## Useful Commands
+## 🧪 Testing & Validation
 
 ```bash
+# Analyze Dart code for errors and warnings
 flutter analyze
+
+# Run unit and widget tests
 flutter test
-flutter pub outdated
+
+# Clean build cache
 flutter clean
 ```
 
-## License
+---
 
-This project is not currently published under a specific open-source license.
+## 📄 License
+
+This project is open-source and available for educational and portfolio demonstration purposes.
